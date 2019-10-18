@@ -34,22 +34,21 @@ function objToSql(ob) {
 
 var orm = {
 	selectAll: function(tableInput, cb) {
-		var queryString = "SELECT * FROM " + tableInput + ";";
+		var queryString = `SELECT * FROM ${tableInput};`;
 		connection.query(queryString, function(err, result) {
 			if (err) throw err;
 			cb(result);
 		});
 	},
-//     create: function (table, columnName, value, cb) {
-//     var queryString = `INSERT INTO ${table} `
-//     queryString = 
-//     connection.query(queryString, function (err, result) {
-//         if (err) {
-//             throw err;
-//         }
-//         cb(result);
-//     });
-// },
+    create: function (table, columnName, value, cb) {
+        var queryString = `INSERT INTO ${table} ${(columnName.toString())}  VALUES ${(printQuestionMarks(value.length))}`;
+        connection.query(queryString, vals, function (err, result) {
+          if (err) {
+            throw err;
+          }
+          cb(result);
+        });
+      },
 
 }
 console.log(orm);
