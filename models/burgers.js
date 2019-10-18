@@ -1,11 +1,11 @@
 var orm = require("../config/orm.js");
 
 var burger = {
-    all: function (cb) {
-        orm.all("burgers", function (result) {
-            cb(result);
+    selectAll: function(cb) {
+        orm.selectAll('burgers', function(res) {
+          cb(res);
         });
-    },
+      },
     // next method
 }
 console.log(burger);
