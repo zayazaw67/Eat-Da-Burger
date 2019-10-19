@@ -48,12 +48,12 @@ var orm = {
         });
     },
     eatOne: function (table, column, condition, cb) {
-        var queryString = `UPDATE ${table} SET ${column} WHERE ${condition};`;
+        var queryString = `UPDATE ${table} SET ${objToSql(column)} WHERE ${condition};`;
         connection.query(queryString, function (err, res) {
             if (err) throw err;
             cb(res);
         })
     },
 }
-console.log(orm);
+// console.log(orm);
 module.exports = orm;

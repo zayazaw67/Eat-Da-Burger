@@ -11,6 +11,11 @@ var burger = {
       cb(res);
     });
   },
+  eatOne: function(column,condition, cb) {
+    orm.eatOne("burgers",column,condition,function(res){
+      cb(res);
+    });
+  },
 }
-console.log(burger);
+// console.log(burger);
 module.exports = burger;

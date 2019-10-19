@@ -1,12 +1,6 @@
 var express = require("express");
 var router = express.Router();
-
-// Import the model (cat.js) to use its database functions.
 var burger = require("../models/burgers.js");
-
-// router.get("/", function(req, res) {
-//     res.redirect("/burgers");
-// });
 
 router.get('/', function (req, res) {
     burger.selectAll(function (data) {
@@ -26,6 +20,17 @@ router.post("/api/burgers", function (req, res) {
     ], function (data) {
         // console.log(data)
         res.redirect('/');
+    });
+});
+
+router.put("/api/burgers/:id", function(req,res){
+    var condition = `id = ${req.params.id}`;
+    burger.eatOne({"devoured":req.body.devoured}, condition, function(response){
+        if (response.changedRows === 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
     });
 });
 
