@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
         var hbsObject = {
             burgers: data
         };
-        // console.log(hbsObject);
+        // console.log(hbsObject.burgers);
         res.render('index', hbsObject);
     });
 });
@@ -24,7 +24,7 @@ router.post("/api/burgers", function (req, res) {
     ], [
         req.body.burger_name
     ], function (data) {
-        console.log(data)
+        // console.log(data)
         res.redirect('/');
     });
 });

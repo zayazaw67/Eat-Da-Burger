@@ -41,8 +41,16 @@ var orm = {
 		});
 	},
     create: function (table, columnName, value, cb) {
-        var queryString = `INSERT INTO ${table} ${(columnName.toString())}  VALUES ${(printQuestionMarks(value.length))}`;
-        connection.query(queryString, vals, function (err, result) {
+        // var queryString = `INSERT INTO ${table} ${(columnName.toString())}  VALUES ${(printQuestionMarks(value.length))}`;
+        var queryString = "INSERT INTO " + table;
+
+        queryString += " (";
+        queryString += columnName.toString();
+        queryString += ") ";
+        queryString += "VALUES (";
+        queryString += printQuestionMarks(value.length);
+        queryString += ") ";
+        connection.query(queryString, value, function (err, result) {
           if (err) {
             throw err;
           }
@@ -51,5 +59,5 @@ var orm = {
       },
 
 }
-console.log(orm);
+// console.log(orm);
 module.exports = orm;

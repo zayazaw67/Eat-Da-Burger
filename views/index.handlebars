@@ -8,16 +8,18 @@
 
 
 <div class="container">
+
     <panel>
-        <form class="create-form">
+        <form class="createBurger">
             <div class="form-group">
                 <label for="new" id="color-override">Add New Burger:</label>
-                <input type="text" id="new" name="burgers">
+                <input type="text" id="addburger" name="burgers">
                 {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
                 <button type="submit" class="btn btn-primary" id="addburger">Add this burger</button>
             </div>
         </form>
     </panel>
+
     <div class="row">
         <!-- UnDevoured Burgers -->
         <div class="col-md-6">
@@ -26,10 +28,10 @@
                 <div class="panel-body">
                     <ul>
                         {{#each burgers}}
-                        {{#unless Devoured}}
-                        <strong>{{this.id}} - {{this.BurgerName}}</strong>
+                        {{#unless devoured}}
+                        <strong>{{this.id}} - {{this.burger_name}}</strong>
                         <button type="button" class="eatburger btn btn-success" id="eatbutton" data-id="{{this.id}}"
-                            data-newDevoured="{{Devour}}">Click to eat this burger!</button>
+                            data-newdevoured="{{devoured}}">Click to eat this burger!</button>
                         <hr>
                         {{/unless}}
                         {{/each}}
@@ -37,6 +39,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Devoured Burgers -->
         <div class="col-md-6">
             <div class="panel panel-default">
@@ -44,10 +47,10 @@
                 <div class="panel-body">
                     <ul>
                         {{#each burgers}}
-                        {{#if Devoured}}
-                        {{this.id}} - {{this.BurgerName}}
+                        {{#if devoured}}
+                        {{this.id}} - {{this.burger_name}}
                         <button type="button" class="trashburger btn btn-danger" id="remove" data-id="{{this.id}}"
-                            data-newDevoured="{{Devour}}"></button>
+                            data-devoured="{{devoured}}"></button>
                         <hr>
                         {{/if}}
                         {{/each}}
