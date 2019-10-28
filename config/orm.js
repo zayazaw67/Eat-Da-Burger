@@ -54,6 +54,14 @@ var orm = {
             cb(res);
         })
     },
+    delete: function (table, condition, cb) {
+        var queryString = `DELETE FROM ${table} WHERE ${condition};`
+        // console.log(queryString);
+        connection.query(queryString, function (err, res) {
+            if (err) { throw err }
+            cb(res);
+        });
+    }
 }
 // console.log(orm);
 module.exports = orm;
