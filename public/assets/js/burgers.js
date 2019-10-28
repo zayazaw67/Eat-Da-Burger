@@ -15,6 +15,7 @@ $(function () {
             location.reload();
         });
     });
+    
     $(".eatburgerbutton").on("click", function (event) {
         event.preventDefault();
         console.log("clicked!")
